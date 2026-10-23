@@ -3,53 +3,51 @@
   <img src="matoio-logo.svg" alt="matoio" width="320">
 </picture>
 
+**English** · [简体中文](README.zh-CN.md)
+
 # matoio
 
 A rounded geometric display typeface, grown from the matoio wordmark. Version 1.000.
 **Free for personal use · commercial use requires a license from [matoio.com](https://matoio.com).**
 
-圆润几何风格的展示字体，基于 matoio 标志的字形扩展而来。**个人免费使用，商业使用需到 [matoio.com](https://matoio.com) 购买授权。**
-
 ![matoio typeface preview](images/preview.svg)
 
-- **Live demo / 在线演示**：https://matoio.github.io/matoio-font/
-- **Design**：by mato io
-- **Website**：https://matoio.com
-- **Contact**：admin@matoio.com
+- **Live demo**: https://matoio.github.io/matoio-font/
+- **Design**: by mato io
+- **Website**: https://matoio.com
+- **Contact**: admin@matoio.com
 
-## 授权 / License
+## License
 
-- **个人非商业使用：免费**。用于个人学习、练习、兴趣创作，前提是不产生收入。
-- **商业使用：需购买授权**。只要用于公司、客户、带收入的作品、网站、App 或 Logo，都算商业使用。授权方式和价格见 **https://matoio.com**。
-- **禁止**：转售或再分发字体文件、改名后再发布、制作与 matoio 标志相似的标识。
-- 完整声明见 [`LICENSE`](LICENSE)。不确定某个用途是否需要授权，请先发邮件到 admin@matoio.com 确认。
+- **Personal, non-commercial use: free.** Study, practice and hobby projects that earn no income.
+- **Commercial use: paid license required.** Anything for a company or client, work that earns income, websites, apps and logos counts as commercial. Licenses and prices: **https://matoio.com**.
+- **Not allowed**: selling or redistributing the font files, re-releasing the font renamed or modified, or making marks that look like the matoio logo.
+- Full terms in [`LICENSE`](LICENSE). Not sure whether your use needs a license? Email admin@matoio.com first.
 
-Free for personal, non-commercial use. Any commercial use — client work, products, websites, apps, logos — needs a license from https://matoio.com. Redistribution and renamed or modified re-releases are not allowed. See [`LICENSE`](LICENSE).
+## Files
 
-## 文件
-
-| 文件 | 用途 |
+| File | Use |
 |---|---|
-| `matoio-Regular.otf` | 桌面安装（推荐，设计软件里曲线最精确） |
-| `matoio-Regular.ttf` | 桌面安装（兼容性最好，老软件也能用） |
-| `matoio-Regular.woff2` | 网页使用（体积最小，约 6.6 KB；网页使用需购买网页授权） |
-| `features.fea` | OpenType 功能的源码（字偶、数字切换），供以后修改字体时参考 |
-| `LICENSE` | 许可声明（中英文）：个人免费，商用需购买授权 |
-| `index.html` | 在线演示页，直接用 `matoio-Regular.woff2` 显示（GitHub Pages 用） |
-| `images/preview.svg`、`images/preview.png` | README 和分享卡片用的预览图 |
-| `matoio-logo.svg`、`matoio-logo-dark.svg` | matoio 标志（暗色版里 io 是白色） |
+| `matoio-Regular.otf` | Desktop install (recommended; most precise curves in design apps) |
+| `matoio-Regular.ttf` | Desktop install (widest compatibility, including older apps) |
+| `matoio-Regular.woff2` | Web use (smallest, about 6.5 KB; web use needs a web license) |
+| `features.fea` | OpenType feature source (kerning, figure switching), for future edits |
+| `LICENSE` | License notice (English and Chinese): free for personal use, paid for commercial use |
+| `index.html` | Live demo page, set in `matoio-Regular.woff2` (served by GitHub Pages) |
+| `images/preview.svg`, `images/preview.png` | Preview images for this README and link cards |
+| `matoio-logo.svg`, `matoio-logo-dark.svg` | matoio logo (the dark version has a white "io") |
 
-## 在线演示（GitHub Pages）
+## Live demo (GitHub Pages)
 
-演示页 `index.html` 通过 GitHub Pages 发布在 **https://matoio.github.io/matoio-font/**（来源：`main` 分支根目录）。页面上的文字全部用 `matoio-Regular.woff2` 实时显示，可以直接试字。
+`index.html` is published with GitHub Pages at **https://matoio.github.io/matoio-font/** (source: root of the `main` branch). Every line on the page is live text in `matoio-Regular.woff2`, and there is a type tester to try your own words.
 
-## 安装
+## Install
 
-- **Windows**：右键 `.otf` 或 `.ttf` → **安装**（或"为所有用户安装"）。
-- **Mac**：双击 `.otf` → 在"字体册"里点**安装**。
-- 安装后在软件的字体列表里找 **matoio**。
+- **Windows**: right-click the `.otf` or `.ttf` → **Install** (or "Install for all users").
+- **macOS**: double-click the `.otf` → **Install** in Font Book.
+- Then pick **matoio** from your app's font list.
 
-## 网页使用
+## Web use
 
 ```css
 @font-face {
@@ -60,38 +58,38 @@ Free for personal, non-commercial use. Any commercial use — client work, produ
 body { font-family: "matoio", system-ui, sans-serif; }
 ```
 
-字体里没有的字符（比如中文、€、@、#）会由后面的 `system-ui, sans-serif` 自动顶上。
+Characters the font does not include (Chinese, €, @, # …) fall back to `system-ui, sans-serif`.
 
-## 包含的字符
+## Character set
 
-- **字母**：a–z、A–Z（52 个）。
-- **数字**：0–9，默认等宽，另附一套比例数字。
-- **标点**：`. , : ; ! ? ' " ‘ ’ “ ” - – — ( ) / &`。
-- **符号**：`% ¥ $`。
-- **空格**：普通空格和不换行空格。
-- **不包含**：中文、其他货币符号（€ £）以及 @ # * + = 等符号。排版时，系统会用默认字体显示这些字符。
+- **Letters**: a–z, A–Z (52).
+- **Figures**: 0–9, tabular by default, plus a proportional set.
+- **Punctuation**: `. , : ; ! ? ' " ‘ ’ “ ” - – — ( ) / &`.
+- **Symbols**: `% ¥ $`.
+- **Spaces**: space and no-break space.
+- **Not included**: Chinese, other currency signs (€ £) and symbols such as @ # * + =. These are shown in the system's default font.
 
-标点采用"平切楔形"风格：逗号和引号是平切的斜梯形，横线是矩形，圆点和 i 的点一样大。它参照普通系统字体标点利落、低调的样子，用梯形、矩形、圆弧和直线从零画出，没有描摹或提取任何现有字体的轮廓。
+The punctuation is drawn in a flat-cut wedge style: commas and quotes are slanted trapezoids with straight cuts, dashes are rectangles, and the dots match the dot on the i. It follows the quiet, crisp look of ordinary system-font punctuation, and was drawn from scratch with trapezoids, rectangles, arcs and straight lines, without tracing or extracting outlines from any existing font.
 
-## 字体功能
+## OpenType features
 
-| 功能 | 作用 | 默认 | 网页写法 |
+| Feature | What it does | Default | CSS |
 |---|---|---|---|
-| `kern` 字偶 | 181 对组合自动收紧：149 对字母（比如 Ty、AV、To）加 32 对标点（比如 T.、Y,、L’、“A） | 开 | `font-kerning: normal;` |
-| `tnum` 等宽数字 | 每个数字一样宽，价格、表格能对齐 | 开 | `font-variant-numeric: tabular-nums;` |
-| `pnum` 比例数字 | 按形状决定宽窄，适合海报大标题 | 关 | `font-variant-numeric: proportional-nums;` |
+| `kern` kerning | 181 pairs tightened automatically: 149 letter pairs (e.g. Ty, AV, To) and 32 punctuation pairs (e.g. T., Y,, L’, “A) | on | `font-kerning: normal;` |
+| `tnum` tabular figures | Every figure is the same width, so prices and tables line up | on | `font-variant-numeric: tabular-nums;` |
+| `pnum` proportional figures | Figures take their natural widths, for posters and headlines | off | `font-variant-numeric: proportional-nums;` |
 
-在 Figma、Illustrator、InDesign 等软件里，比例数字可以在"OpenType"或"数字"面板里打开。
+In Figma, Illustrator, InDesign and similar apps, proportional figures are in the "OpenType" or "Figures" panel.
 
-## 规格
+## Specs
 
-- 每 em 1000 单位。
-- 大写高 694，x 高 528。
-- 上伸部 714，下伸部 -186。
-- 笔画粗细 156（设计稿里的 78 放大 2 倍）。
-- 行高参数：上 760、下 -240、行距 0，默认行高约 1.0 em。建议正文行高设 1.2–1.3。
+- 1000 units per em.
+- Cap height 694, x-height 528.
+- Ascender 714, descender −186.
+- Stroke weight 156 (the design's 78 at 2× scale).
+- Vertical metrics: ascent 760, descent −240, line gap 0, so the default line height is about 1.0 em. For running text, set line-height to 1.2–1.3.
 
-## 已知限制
+## Known limitations
 
-- **字符集**：只覆盖英文字母、数字和常用标点，其他字符由系统字体补上。在少数会把缺字显示成方框的软件里，需要手动给这些字符换字体。
-- **字重**：只有一个字重（Regular，视觉上偏粗）。
+- **Character set**: Latin letters, figures and common punctuation only; other characters fall back to a system font. In the few apps that show missing characters as boxes, switch those characters to another font by hand.
+- **Weights**: a single weight (Regular, visually bold).

@@ -44,19 +44,30 @@
 html, body { margin: 0; }
 body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--ui); }
 a { color: inherit; }
-.wrap { max-width: 1120px; margin: 0 auto; padding-block: 28px 64px;
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: 16px 64px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
   display: grid; gap: 64px; }
 .d { font-family: var(--display); font-kerning: normal; line-height: 1.12; overflow-wrap: break-word; }
 .tomato { color: var(--tomato); } .leaf { color: var(--leaf); } .sky { color: var(--sky); } .muted { color: var(--muted); }
 
 /* top bar */
-.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+.topbar { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid transparent;
+  background: color-mix(in srgb, var(--bg) 84%, transparent); -webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px); }
+.topbar.scrolled { border-bottom-color: var(--rule); box-shadow: 0 10px 30px -24px rgba(0, 0, 0, .6); }
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;
+  max-width: 1120px; margin: 0 auto; padding-block: 16px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.topbar.scrolled .top { padding-block: 10px; }
 .top .logo { display: block; }
 .top .logo svg { height: 34px; width: auto; display: block; }
 .top nav { display: flex; flex-wrap: wrap; gap: 6px; }
 .btn { font: 500 14px var(--ui); text-decoration: none; color: var(--ink); border: 1px solid var(--rule); border-radius: 999px; padding: 7px 14px; background: transparent; cursor: pointer; }
 .btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn:hover { background: var(--chip); border-color: var(--muted); transform: translateY(-1px); }
+.btn.primary:hover { background: var(--tomato); border-color: var(--tomato); color: #fff; }
+.btn:active { transform: translateY(0) scale(.96); }
+.top .logo:hover svg { transform: rotate(-4deg) scale(1.05); }
+.chip:hover { transform: scale(1.12); }
 .btn:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--tomato); outline-offset: 2px; }
 
 header.hero { display: grid; gap: 18px; }
@@ -124,12 +135,16 @@ footer .row { display: flex; flex-wrap: wrap; gap: 8px; }
   .kern .row, .water .row { grid-template-columns: 1fr; gap: 0; }
   #tester { font-size: 56px; }
 }
-@media (prefers-reduced-motion: no-preference) { .btn, .chip { transition: background .15s, border-color .15s; } }
+@media (prefers-reduced-motion: no-preference) {
+  .btn, .chip { transition: background .18s, border-color .18s, color .18s, transform .18s; }
+  .topbar { transition: border-color .25s, box-shadow .25s; }
+  .top { transition: padding .25s; }
+  .top .logo svg { transition: transform .3s cubic-bezier(.3, 1.6, .5, 1); }
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-
+<div class="topbar" id="topbar">
   <div class="top">
     <a class="logo" href="https://matoio.com" aria-label="matoio.com"><svg viewBox="20 173 1730 476" role="img" aria-label="matoio" xmlns="http://www.w3.org/2000/svg"><path id="letter-m" d="M 70 557.01 V 443.04 C 70 380.16 120.255 333 183.396 333 C 214.3221 333 233.651 343.48 250.4027 360.51 Q 262 372.3 273.5973 360.51 C 292.9262 340.86 313.5436 333 340.604 333 C 402.4564 333 454 381.47 454 443.04 V 557.01 C 454 577.97 437.2483 595 416.6309 595 C 396.0134 595 379.2617 577.97 379.2617 557.01 V 443.04 C 379.2617 422.08 361.2215 408.98 340.604 408.98 C 317.4094 408.98 299.3691 424.7 299.3691 445.66 V 557.01 C 299.3691 577.97 282.6174 595 262 595 C 241.3826 595 224.6309 577.97 224.6309 557.01 V 443.04 C 224.6309 422.08 206.5906 408.98 184.6846 408.98 C 162.7785 408.98 144.7383 424.7 144.7383 445.66 V 557.01 C 144.7383 577.97 127.9866 595 107.3691 595 C 86.7517 595 70 577.97 70 557.01 Z" fill="#EB4534" fill-rule="evenodd"/><path id="letter-a" d="M 743 464 V 558.43 C 743 579.71 725.515 597 703.995 597 C 687.855 597 677.095 585.03 664.99 585.03 C 652.885 585.03 640.78 597 608.5 597 C 534.2157 597 474 537.4559 474 464 C 474 390.5441 534.2157 331 608.5 331 C 682.7844 331 743 390.5441 743 464 Z M 664.99 464 A 56.49 55.86 0 1 0 552.01 464 A 56.49 55.86 0 1 0 664.99 464 Z" fill="#EB4534" fill-rule="evenodd"/><path id="letter-t" d="M 839.264 264 C 860.768 264 878.24 281.1107 878.24 302.17 V 335.0751 H 893.024 C 914.528 335.0751 932 352.1858 932 373.2451 C 932 394.3043 914.528 411.415 893.024 411.415 H 878.24 V 507.498 C 878.24 515.3953 882.272 520.6601 891.68 520.6601 C 913.184 520.6601 930.656 537.7708 930.656 558.83 C 930.656 579.8893 913.184 597 891.68 597 C 832.544 597 800.288 564.0949 800.288 507.498 V 411.415 H 802.976 C 781.472 411.415 764 394.3043 764 373.2451 C 764 352.1858 781.472 335.0751 802.976 335.0751 H 800.288 V 302.17 C 800.288 281.1107 817.76 264 839.264 264 Z" fill="#EB4534" fill-rule="evenodd"/><path id="tomato-fruit" d="M1048 342C997 363 960 409 960 465C960 539.006 1023.087 599 1101 599C1178.913 599 1242 539.006 1242 465C1242 409 1205 363 1154 342C1139 348 1130 361 1120 378C1116 390 1111 393 1102 393C1092 393 1087 388 1082 377C1070 360 1060 349 1048 342Z M1160 465A59 57 0 1 0 1042 465A59 57 0 1 0 1160 465Z" fill="#EB4534" fill-rule="evenodd"/><path id="tomato-crown" d="M1080 294C1079 267 1094 241 1113 227C1124 220 1137 222 1144 233C1152 247 1146 257 1136 262C1125 267 1120 282 1122 295C1145 283 1178 292 1194 310C1199 316 1196 324 1189 324C1166 323 1146 332 1130 346C1118 356 1112 369 1107 375C1104 379 1098 379 1095 373C1087 353 1070 333 1052 327C1040 324 1030 323 1021 324C1012 324 1008 317 1014 310C1029 287 1057 286 1080 294Z" fill="#009A7B" fill-rule="evenodd"/><path id="letter-i-dot" d="M1399 278.5A42 41.5 0 1 0 1315 278.5A42 41.5 0 1 0 1399 278.5Z" fill="var(--logo-io)" fill-rule="evenodd"/><path id="letter-i-stem" d="M1315 387A41 41 0 0 1 1397 387V555A41 41 0 0 1 1315 555Z" fill="var(--logo-io)" fill-rule="evenodd"/><path id="letter-o" d="M1700 465A140 134 0 1 0 1420 465A140 134 0 1 0 1700 465Z M1619 465A59 57 0 1 0 1501 465A59 57 0 1 0 1619 465Z" fill="var(--logo-io)" fill-rule="evenodd"/></svg></a>
     <nav>
@@ -140,6 +155,9 @@ footer .row { display: flex; flex-wrap: wrap; gap: 8px; }
       <button class="btn" id="themeBtn" type="button">Light / Dark</button>
     </nav>
   </div>
+</div>
+
+<div class="wrap">
 
   <header class="hero">
     <div class="eyebrow">matoio · rounded geometric display typeface</div>
@@ -267,6 +285,11 @@ document.getElementById("themeBtn").addEventListener("click", () => {
   root.dataset.theme = dark ? "light" : "dark";
   try { localStorage.setItem("matoio-theme", root.dataset.theme); } catch (e) {}
 });
+
+// top bar: border + shadow once the page has scrolled
+const topbar = document.getElementById("topbar");
+const onScroll = () => topbar.classList.toggle("scrolled", scrollY > 8);
+addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
 // type tester controls
 const tester = document.getElementById("tester");
